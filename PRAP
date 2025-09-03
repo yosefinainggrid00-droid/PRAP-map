@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>PRAP.MAP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body { margin:0; padding:0; font-family: Arial, sans-serif; }
+    h1 { padding: 10px; background:#f0f0f0; margin:0; }
+    p { padding: 0 10px 10px 10px; }
+    #map { height: 90vh; width: 100%; }
+  </style>
+</head>
+<body>
+  <h1>PRAP.MAP</h1>
+  <p>
+    Dengan Peta Risiko Akses Preservasi (PRAP), data geospasial jalan, titik rawan bencana,
+    curah hujan, jarak distribusi material, dan riwayat keterlambatan akan diintegrasikan
+    dalam satu sistem.
+  </p>
+
+  <!-- Peta -->
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    // Inisialisasi peta di Papua Pegunungan (sekitar Wamena)
+    var map = L.map('map').setView([-4.3, 138.9], 7);
+
+    // Tambahkan layer basemap OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    // Tambahkan contoh marker di Wamena
+    L.marker([-4.083, 138.95]).addTo(map)
+      .bindPopup('Kota Wamena - contoh marker risiko')
+      .openPopup();
+  </script>
+</body>
+</html>
